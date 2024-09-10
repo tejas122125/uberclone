@@ -4,7 +4,7 @@ const Onboarding = () => {
     return (
         <SafeAreaView>
             <Text>
-                Home helooo
+                Home helooo welcvomr
             </Text>
         </SafeAreaView>
     );
