@@ -1,7 +1,7 @@
 import { onboarding } from "@/constants";
 import { router } from "expo-router";
 import { useRef, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native"
+import { View, Text, TouchableOpacity, Image } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
 import Swiper from "react-native-swiper";
 const Onboarding = () => {
@@ -15,14 +15,15 @@ const Onboarding = () => {
                 <Text className="text-black text-base font-JakartaBold">Skip</Text>
             </TouchableOpacity>
            
-            <Swiper className="bg-green-300" ref={swiperRef} loop={false} dot={<View className="w-[32px] h-[4px] mx-1 bg-[#E2E8F0]" />}
+            <Swiper className="bg-green-300" ref={swiperRef} loop={false} dot={<View className="w-[32px] h-[4px] mx-1 bg-[#E2E8F0] rounded-full" />}
                 activeDot={<View className="w-[32px] h-[4px] mx-1 bg-[#0286FF] rounded-full" />}
                 onIndexChanged={(index) => { setIndexValue(index) }}>
                     {onboarding.map((item) =>
                     {
                         return (
-                            <View>
+                            <View key={item.id} className="flex items-center justify-center p-5">
                                 <Text>{item.title}</Text>
+                                <Image source={item.image} className="w-full h-[300px]" resizeMode="contain" />
                             </View>
                         )
                     })}
