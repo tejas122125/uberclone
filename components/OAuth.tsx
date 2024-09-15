@@ -4,7 +4,7 @@ import { icons } from "@/constants"
 
 const OAuth = ()=>{
     const handleGoogleSignIn = async()=> {
-        
+
     }
     return (
         <View>
@@ -19,3 +19,5 @@ const OAuth = ()=>{
         </View>
     )
 }
+
+export default OAuth;

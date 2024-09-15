@@ -1,9 +1,10 @@
 import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
+import OAuth from "@/components/OAuth";
 import { icons, images } from "@/constants";
 import { Link } from "expo-router";
 import { useState } from "react";
-import { View, Text, ScrollView, Image } from "react-native"
+import { View, Text, ScrollView, Image, KeyboardAvoidingView, Platform } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
 const onSignUpPress = async () => {
 
@@ -36,13 +37,15 @@ const Signup = () => {
                 setForm({ ...form, password: value })
             }} />
 
-            <CustomButton title="Sign-Up" onPress={onSignUpPress} className="mt-6" />
-            {/* oAuth  */}
-            <Link href={"/(auth)/sign-in"} className=" text-lg text-center text-general-200 mt-10">
-                <Text >Already have an account ?</Text>
-                <Text className="text-primary-500">Log In</Text>
-            </Link>
-
+            <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : "height"} className="bg-red-100 mx-4">
+                <CustomButton title="Sign-Up" onPress={onSignUpPress} className="mt-6" />
+                {/* oAuth  */}
+                <OAuth/>
+                <Link href={"/(auth)/sign-in"} className=" text-lg text-center text-general-200 mt-10">
+                    <Text >Already have an account ?</Text>
+                    <Text className="text-primary-500">Log In</Text>
+                </Link>
+            </KeyboardAvoidingView>
         </ScrollView>
     );
 };
