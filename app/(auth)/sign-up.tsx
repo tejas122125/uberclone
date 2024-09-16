@@ -2,6 +2,7 @@ import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import OAuth from "@/components/OAuth";
 import { icons, images } from "@/constants";
+import { fetchAPI } from "@/lib/fetch";
 import { useSignUp } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
 import { useState } from "react";
@@ -61,6 +62,14 @@ const Signup = () => {
             if (completeSignUp.status === 'complete') {
                 await setActive({ session: completeSignUp.createdSessionId })
                 //create a new user in our database 
+                await fetchAPI('/(api)/user',{
+                    method:'POST',
+                    body:JSON.stringify({
+                        name : form.name,
+                        email:form.email,
+                        clerkId:completeSignUp.createdUserId
+                    })
+                })
 
                 setVerification({ ...verification, state: "success" })
                 setShowSuccessModal("success")
