@@ -18,7 +18,7 @@ const Signup = () => {
     const router = useRouter()
 
     const [verification, setVerification] = useState({
-        state: "success",
+        state: "pending",
         error: "",
         code: ''
     })
@@ -107,13 +107,32 @@ const Signup = () => {
                 {/* </KeyboardAvoidingView> */}
 
                 {/* verification modal  */}
+                <ReactNativeModal onModalHide={()=>{
+                    setVerification({...verification,state:"success"})
+                }}    isVisible={verification.state === 'pending'}>
+                    <View className="px-7 py-9 bg-white rounded-2xl minh-[300px]">
+                        <Text className="text-2xl font-JakartaBold mb-2">Verification</Text>
+                        <Text className="font-Jakarta mb-5">
+                            we have sent you a verification code
+                        </Text>
+                        <InputField label="Code" icon={icons.lock} placeholder="12345" value={verification.code} keyboardType="numeric" onChangeText={(code)=>{
+                            setVerification({...verification,code:code})
+                        }}/>
+
+                        {verification.error && (<Text className="text-red-500 text-sm mt-1">{verification.error}</Text>)                        
+                        }
+
+                        <CustomButton title="Verify Email" className="mt-5 bg-success-500" onPress={onPressVerify}/>
+
+                    </View>
+                </ReactNativeModal>
 
                 <ReactNativeModal isVisible={verification.state === 'success'}>
                     <View className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">
                         <Image source={images.check} className=" w-[110px] h-[110px] my-5  mx-auto " />
                         <Text className="text-3xl font-JakartaBold text-center">Verified</Text>
                         <Text className="text-base text-gray-500  font-Jakarta text-center">You have successfully verified your account</Text>
-<CustomButton title="Browse Home " onPress={()=>{return router.replace("/(root)/(tabs)/home")}} className="mt-5"/>
+                        <CustomButton title="Browse Home " onPress={() => { return router.replace("/(root)/(tabs)/home") }} className="mt-5" />
                     </View>
                 </ReactNativeModal>
 
