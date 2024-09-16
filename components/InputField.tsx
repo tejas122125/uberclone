@@ -4,7 +4,7 @@ import { View, KeyboardAvoidingView, Text, TouchableWithoutFeedback, Image, Text
 const InputField = ({ labelStyle, label, icon, className, containerStyle, inputStyle, iconStyle, secureTextEntry = false, ...props }: InputFieldProps) => {
     return (
 
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : "height"}  className="bg-red-100 mx-4">
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : "height"}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View className=" my-2 w-full ">
                     <Text className={`text-lg font-JakartaSemiBold mb-3 ${labelStyle}`}>

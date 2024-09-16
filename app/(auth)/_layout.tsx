@@ -10,13 +10,7 @@ import 'react-native-reanimated';
 SplashScreen.preventAutoHideAsync();
 
 const Layout = () => {
-    const { isSignedIn } = useAuth()
 
-    if (isSignedIn) {
-        return <Redirect href={'/'} />
-    }
-  else {
-   
     return (
 
         <Stack>
@@ -26,6 +20,5 @@ const Layout = () => {
         </Stack>
 
     );
-}
 }
 export default Layout
