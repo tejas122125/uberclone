@@ -1,5 +1,6 @@
 
-import { Stack } from 'expo-router';
+import { useAuth } from '@clerk/clerk-expo';
+import { Redirect, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import 'react-native-reanimated';
 
@@ -9,8 +10,12 @@ import 'react-native-reanimated';
 SplashScreen.preventAutoHideAsync();
 
 const Layout = () => {
+    const { isSignedIn } = useAuth()
 
-  
+    if (isSignedIn) {
+        return <Redirect href={'/'} />
+    }
+  else {
    
     return (
 
@@ -21,5 +26,6 @@ const Layout = () => {
         </Stack>
 
     );
+}
 }
 export default Layout
