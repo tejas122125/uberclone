@@ -2,6 +2,7 @@ import { View, Text, FlatList } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
 import { Link } from "expo-router";
+import RideCard from "@/components/rideCard";
 
 const recentRides = [
     {
@@ -106,12 +107,9 @@ const Home = () => {
     const { user } = useUser()
     return (
         <SafeAreaView>
-            <View>
-                <SignedIn>
-                    <Text>Hello {user?.emailAddresses[0].emailAddress}</Text>
-                </SignedIn>
-                <FlatList data={[]}/>
-            </View>
+            
+                <FlatList data={recentRides?.slice(0,5)} renderItem={({item})=>{return <RideCard ride={item}/>}}/>
+            
         </SafeAreaView>
     );
 };
