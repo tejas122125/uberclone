@@ -1,9 +1,10 @@
-import { View, Text, FlatList, Image, ActivityIndicator } from "react-native"
+import { View, Text, FlatList, Image, ActivityIndicator, TouchableOpacity } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
 import { Link } from "expo-router";
 import RideCard from "@/components/rideCard";
-import { images } from "@/constants";
+import { icons, images } from "@/constants";
+import GoogleTextInput from "@/components/GoogleTextInput";
 
 const recentRides = [
     {
@@ -105,6 +106,9 @@ const recentRides = [
 ]
 
 const Home = () => {
+    const handleSignOut = ()=>{
+
+    }
     const { user } = useUser()
     const loading = true
     return (
@@ -130,17 +134,23 @@ const Home = () => {
                         }
 
                     </View>
-                )} 
-                ListHeaderComponent={()=>(
+                )}
+                ListHeaderComponent={() => (
                     <>
-                    <View className="flex flex-row items-center justify-between my-5">
-<Text className="text-xl font-JakartaMedium text-center">
-    Welcome {user?.firstName || user?.emailAddresses[0].emailAddress}
-</Text>
-                    </View>
+                        <View className="flex flex-wrap flex-row items-center justify-between my-5 ">
+                            <View className="w-4/5 overflow-hidden">
+                            <Text className="text-xl font-JakartaMedium text-center capitalize" numberOfLines={1}>
+                                Welcome {user?.firstName || user?.emailAddresses[0].emailAddress.split('@')[0]}
+                            </Text>
+                            </View>
+                            <TouchableOpacity onPress={handleSignOut} className="items-center justify-center w-10 h-10 bg-white rounded-full">
+                                <Image source={icons.out} className=" h-6  w-6 "/>
+                            </TouchableOpacity>
+                        </View>
+                        <GoogleTextInput/>
                     </>
                 )}
-                />
+            />
 
         </SafeAreaView>
     );
