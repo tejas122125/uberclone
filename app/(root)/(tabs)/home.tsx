@@ -5,6 +5,7 @@ import { Link } from "expo-router";
 import RideCard from "@/components/rideCard";
 import { icons, images } from "@/constants";
 import GoogleTextInput from "@/components/GoogleTextInput";
+import Map from "@/components/Map";
 
 const recentRides = [
     {
@@ -109,6 +110,9 @@ const Home = () => {
     const handleSignOut = ()=>{
 
     }
+    const handleDestinationPress = ()=>{
+
+    }
     const { user } = useUser()
     const loading = true
     return (
@@ -147,7 +151,16 @@ const Home = () => {
                                 <Image source={icons.out} className=" h-6  w-6 "/>
                             </TouchableOpacity>
                         </View>
-                        <GoogleTextInput/>
+                        <GoogleTextInput icon={icons.search} containerStyle = "bg-white shadow-md shadow-neutral-300" handlePress= {handleDestinationPress}  />
+
+                        <>
+                        <Text className="text-xl font-JakartaBold mt-5 mb-4">
+                            Your Current Location
+                        </Text>
+                        <View className="flex flex-row items-center bg-transparent h-[300px] w-full">
+<Map/>
+                        </View>
+                        </>
                     </>
                 )}
             />
