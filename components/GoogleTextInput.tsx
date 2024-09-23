@@ -2,7 +2,7 @@ import { icons } from "@/constants";
 import { GoogleInputProps } from "@/types/type";
 import { View, Text,Image } from "react-native";
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
-const GoogleTextInput = ({icon,initialLocation,containerStyle,textInputBackgroundColor,handlePress}:GoogleInputProps) => {
+const GoogleTextInput = ({icon,initialLocation,containerStyle,textInputBackgroundColor,fakeHandlePress}:GoogleInputProps) => {
     const googlePlacesApiKey = process.env.EXPO_PUBLIC_GOOGLE_API_KEY
     return (
         <View className={`flex flex-row items-center justify-center relative z-50 rounded-xl ${containerStyle} mb-5`}>
@@ -31,7 +31,11 @@ const GoogleTextInput = ({icon,initialLocation,containerStyle,textInputBackgroun
            }}
            
            onPress={(data,details = null) =>{
-            handlePress({latitude:details?.geometry.location.lat!,longitude : details?.geometry.location.lng! , address:data.description});
+            // handlePress({latitude:details?.geometry.location.lat!,longitude : details?.geometry.location.lng! , address:data.description});cl
+
+            console.log("presing");
+            
+            fakeHandlePress();
            }}
            query={{key:googlePlacesApiKey,language:'EN'}}
            renderLeftButton={()=>(

@@ -1,7 +1,7 @@
 import { View, Text, FlatList, Image, ActivityIndicator, TouchableOpacity } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import RideCard from "@/components/rideCard";
 import { icons, images } from "@/constants";
 import GoogleTextInput from "@/components/GoogleTextInput";
@@ -112,7 +112,15 @@ const Home = () => {
     const handleSignOut = () => {
 
     }
-    const handleDestinationPress = () => {
+    //     const handleDestinationPress = (location:{latitude:number,longitude:number,address:string}) => {
+    // setDestinationLocation(location)
+    // router.push('/(root)/find-ride')
+
+    //     }
+    const handleFakeDestinationPress = () => {
+        // setDestinationLocation()
+        setDestinationLocation({ latitude: 22.28, longitude: 85.77, address: "sum Hospital bhubaneswar" })
+        router.push('/(root)/find-ride')
 
     }
     const { setUserLocation, setDestinationLocation } = useLocationStore();
@@ -180,7 +188,12 @@ const Home = () => {
                                 <Image source={icons.out} className=" h-6  w-6 " />
                             </TouchableOpacity>
                         </View>
-                        <GoogleTextInput icon={icons.search} containerStyle="bg-white shadow-md shadow-neutral-300" handlePress={handleDestinationPress} />
+                        <GoogleTextInput icon={icons.search} containerStyle="bg-white shadow-md shadow-neutral-300" fakeHandlePress={handleFakeDestinationPress} />
+                        <View>
+                            <TouchableOpacity className="bg-red-300 flex flex-row items-center justify-center" onPress={handleFakeDestinationPress}>
+                                <Text>monu</Text>
+                            </TouchableOpacity>
+                        </View>
 
                         <>
                             <Text className="text-xl font-JakartaBold mt-5 mb-4">
