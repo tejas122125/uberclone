@@ -21,6 +21,7 @@ SplashScreen.preventAutoHideAsync();
 const Layout = () => {
     return (
         <Tabs initialRouteName='index' screenOptions={{
+            tabBarHideOnKeyboard:true,
             tabBarActiveTintColor: 'white',
             tabBarInactiveTintColor: "white",
             tabBarShowLabel: false,
