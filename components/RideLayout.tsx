@@ -9,7 +9,7 @@ import BottomSheet, {
 } from "@gorhom/bottom-sheet";
 import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 
-const RideLayout = ({ title,snappoints, children }: { title: string,snappoints:[], children: React.ReactNode }) => {
+const RideLayout = ({ title,snappoints, children }: { title: string,snappoints?:string[], children: React.ReactNode }) => {
     const bottomSheetRef = useRef<BottomSheet> (null);
     return (
         <GestureHandlerRootView>
