@@ -8,7 +8,7 @@ const Home = () => {
  
         
     if (isSignedIn) {
-        return <Redirect href={'/(root)/(tabs)/home'} />
+        return <Redirect href={'/(root)/(tabs)/animationTest'} />
     }
     else {
        return  <Redirect href="/(auth)/welcome" />

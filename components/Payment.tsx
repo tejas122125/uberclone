@@ -32,13 +32,26 @@ const Payment = ({
     const [success, setSuccess] = useState<boolean>(false);
 
     const openPaymentSheet = async () => {
-        await initializePaymentSheet();
+        console.log("first");
+        try {
+            await initializePaymentSheet();
+
+        } catch (error) {
+            console.log("e4ror in initi function");
+            
+            console.log(error);
+
+        }
 
         const { error } = await presentPaymentSheet();
 
         if (error) {
             Alert.alert(`Error code: ${error.code}`, error.message);
+            console.log(error);
+            
         } else {
+            console.log("success");
+            
             setSuccess(true);
         }
     };
@@ -126,7 +139,7 @@ const Payment = ({
         <>
             <CustomButton
                 title="Confirm Ride"
-                className="my-10"
+                className="my-10 mb-14"
                 onPress={openPaymentSheet}
             />
 

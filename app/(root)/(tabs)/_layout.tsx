@@ -63,7 +63,7 @@ const Layout = () => {
                 headerShown: false,
                 tabBarIcon: ({ focused }) => <Tabicon focused={focused} source={icons.profile} />
             }} />
-
+           
         </Tabs>
     );
 }

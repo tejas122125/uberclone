@@ -31,7 +31,7 @@ const DriverCard = ({ item, selected, setSelected }: DriverCardProps) => {
                     <View className="flex flex-row items-center">
                         <Image source={icons.dollar} className="w-4 h-4" />
                         <Text className="text-sm font-JakartaRegular ml-1">
-                            ${item.price}
+                          { 565}
                         </Text>
                     </View>
 
@@ -40,7 +40,8 @@ const DriverCard = ({ item, selected, setSelected }: DriverCardProps) => {
                     </Text>
 
                     <Text className="text-sm font-JakartaRegular text-general-800">
-                        {formatTime(item.time!)}
+                        5 min
+                        {/* {formatTime(item.time!)} */}
                     </Text>
 
                     <Text className="text-sm font-JakartaRegular text-general-800 mx-1">
